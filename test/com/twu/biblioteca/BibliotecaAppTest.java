@@ -49,4 +49,15 @@ public class BibliotecaAppTest {
         assertThat(message, is("Welcome to Biblioteca"));
     }
 
+    @Test
+    public void shouldDisplayMainMenuOptions(){
+        String mainMenu = biblioteca.showMainMenu();
+        assertThat(mainMenu, is("Main Menu: 1. List Books"));
+    }
+
+    @Test
+    public void shouldListBooksWhenSelectListBooksFromMenu() {
+        ArrayList<String> expectedList = biblioteca.chooseMenuOption("1");
+        assertEquals(expectedList, biblioteca.getListOfBooks());
+    }
 }
