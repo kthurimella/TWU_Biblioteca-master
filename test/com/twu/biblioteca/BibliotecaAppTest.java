@@ -2,12 +2,14 @@ package com.twu.biblioteca;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 
@@ -45,5 +47,12 @@ public class BibliotecaAppTest {
         biblioteca.start();
         verify(menu).chooseOption();
     }
+
+//    @Test
+//    public void shouldChooseOptionsTwiceWhenSecondOptionIsQuit(){
+//        when(buffere)
+//        biblioteca.start();
+//        verify(menu, times(2)).chooseOption();
+//    }
 
 }

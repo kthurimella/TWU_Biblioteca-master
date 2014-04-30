@@ -1,19 +1,15 @@
 package com.twu.biblioteca;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.PrintStream;
 
 public class BibliotecaApp {
 
     private PrintStream printStream;
-    private BufferedReader inStream;
     private Menu menu;
 
-    public BibliotecaApp(Catalog catalog, PrintStream printStream, BufferedReader inStream) {
+    public BibliotecaApp(PrintStream printStream, Menu menu) {
         this.printStream = printStream;
-        this.inStream = inStream;
-        this.menu = new Menu(this, catalog);
+        this.menu = menu;
     }
 
     public void displayUserPrompt() {
@@ -22,11 +18,8 @@ public class BibliotecaApp {
         printStream.print("Please select an option: ");
     }
 
-    public void readUserInput() {
-        try {
-            menu.chooseMenuOption(inStream.readLine());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void start() {
+        printStream.println("Welcome to Biblioteca!");
+        menu.chooseOption();
     }
 }
