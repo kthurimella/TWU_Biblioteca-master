@@ -19,6 +19,7 @@ public class BibliotecaAppTest {
     private BibliotecaApp biblioteca;
     private PrintStream printStream;
     private BufferedReader inStream;
+    private Catalog catalog;
 
     @Before
     public void setUp() throws Exception {
@@ -27,7 +28,7 @@ public class BibliotecaAppTest {
 
         Collection<String> bookList = new ArrayList<String>();
         bookList.add("Book 1");
-        Catalog catalog = new Catalog(bookList, printStream);
+        catalog = mock(Catalog.class);
         biblioteca = new BibliotecaApp(catalog, printStream, inStream);
     }
 
@@ -38,13 +39,26 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void shouldDisplayBookListWhenGivenProperInput() throws IOException {
+    public void shouldPrintListOfBooksWhenUserEnter1() throws IOException {
         when(inStream.readLine())
                 .thenReturn("1");
 
         biblioteca.readUserInput();
-        verify(printStream).println("Book List:");
-        verify(printStream).println("Book 1");
+        verify(catalog).printListOfBooks();
 
     }
+
+    @Test
+    public void shouldWelcomeUserWhenWeStart(){
+        biblioteca.start();
+        verify(printStream).println("Welcome to Biblioteca!");
+    }
+
+    @Test
+    public void shouldListBooksWhenWeStart(){
+        biblioteca.start();
+        verify(catalog).printListOfBooks();
+    }
+
+
 }
