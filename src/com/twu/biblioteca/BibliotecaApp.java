@@ -1,37 +1,32 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintStream;
 
 public class BibliotecaApp {
 
-    private ArrayList<String> bookList;
+    private PrintStream printStream;
+    private BufferedReader inStream;
+    private Menu menu;
 
-    public BibliotecaApp(ArrayList<String> bookList ){
-        this.bookList = bookList;
+    public BibliotecaApp(Catalog catalog, PrintStream printStream, BufferedReader inStream) {
+        this.printStream = printStream;
+        this.inStream = inStream;
+        this.menu = new Menu(this, catalog);
     }
 
-    public ArrayList<String> getListOfBooks() {
-        return bookList;
+    public void displayUserPrompt() {
+        printStream.println("Welcome to Biblioteca!");
+        printStream.println("Main Menu: 1. List Books");
+        printStream.print("Please select an option: ");
     }
 
-    public String start() {
-        return "Welcome to Biblioteca";
-    }
-
-    public static void main(String[] args) {
-        BibliotecaApp ba = new BibliotecaApp( new ArrayList<String>() );
-        System.out.println(ba.start());
-    }
-
-    public String showMainMenu() {
-        return "Main Menu: 1. List Books";
-    }
-
-    public ArrayList<String> chooseMenuOption(String s) {
-        int optionNumber = Integer.parseInt(s);
-        if (optionNumber == 1)
-            return getListOfBooks();
-        else
-            throw new NoSuchMethodError();
+    public void readUserInput() {
+        try {
+            menu.chooseMenuOption(inStream.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
