@@ -17,13 +17,17 @@ public class Menu {
         this.doneState = isDone;
     }
 
-
     public void chooseOption() {
-        printStream.println("Main Menu: 1. List Books");
         String option = readline();
         if (option.equals("1")) {
             catalog.printListOfBooks();
-        } else if (option.equalsIgnoreCase("Quit")){
+        }
+        else if(option.equals("2")){
+            printStream.print("Please select the book you would like to check out: ");
+            catalog.removeCheckedOutBook(readline());
+            printStream.println("Thank you! Enjoy the book");
+        }
+        else if (option.equalsIgnoreCase("Quit")){
             doneState = true;
             printStream.println("Thanks for using the App!");
         }
@@ -46,6 +50,8 @@ public class Menu {
     }
 
     public void printOptions() {
+        printStream.println("Main Menu:");
+        printStream.println("1. List Books");
         printStream.println("2. Checkout Book");
     }
 }

@@ -21,6 +21,7 @@ public class Catalog {
         for(String book : books){
             printStream.println(book);
         }
+        printStream.println();
     }
 
     public Collection<String> getBooks(){

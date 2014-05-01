@@ -36,13 +36,6 @@ public class MenuTest {
     }
 
     @Test
-    public void shouldPrintOptions() throws IOException {
-        when(bufferedReader.readLine()).thenReturn("");
-        menu.chooseOption();
-        verify(printStream).println("Main Menu: 1. List Books");
-    }
-
-    @Test
     public void shouldListBooksWhenUserEntersOne() throws IOException {
         when(bufferedReader.readLine()).thenReturn("1");
         menu.chooseOption();
@@ -81,6 +74,20 @@ public class MenuTest {
     public void shouldDisplayCheckoutBookOptionInMenu() {
         menu.printOptions();
         verify(printStream).println("2. Checkout Book");
+    }
+
+    @Test
+    public void shouldCheckOutBookWhenInputIsTwo() throws IOException {
+        when(bufferedReader.readLine()).thenReturn("2").thenReturn("Book A");
+        menu.chooseOption();
+        verify(catalog).removeCheckedOutBook("Book A");
+    }
+
+    @Test
+    public void shouldDisplayThankYouMessageWhenBookIsCheckedOut() throws IOException {
+        when(bufferedReader.readLine()).thenReturn("2").thenReturn("Book 1");
+        menu.chooseOption();
+        verify(printStream).println("Thank you! Enjoy the book");
     }
 
 }

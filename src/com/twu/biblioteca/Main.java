@@ -14,9 +14,7 @@ public class Main {
         PrintStream out = System.out;
         Catalog catalog = new Catalog(books, out);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-//        AmIDone isDone = new AmIDone();
         BibliotecaApp app = new BibliotecaApp(out, new Menu(catalog, bufferedReader, out, false));
         app.start();
-
     }
 }

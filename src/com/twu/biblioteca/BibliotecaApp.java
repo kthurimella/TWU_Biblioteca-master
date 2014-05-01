@@ -21,6 +21,7 @@ public class BibliotecaApp {
     public void start() {
         printStream.println("Welcome to Biblioteca!");
         do {
+            menu.printOptions();
             menu.chooseOption();
         }while(!menu.isDone());
     }
