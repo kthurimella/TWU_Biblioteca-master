@@ -11,9 +11,6 @@ import java.util.Collection;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-/**
- * Created by ahochoy on 4/30/14.
- */
 public class CatalogTest {
     private Catalog catalog;
     private PrintStream printStream;

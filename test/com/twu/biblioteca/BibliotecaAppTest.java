@@ -2,15 +2,12 @@ package com.twu.biblioteca;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 
 // Dismantle!
@@ -41,18 +38,20 @@ public class BibliotecaAppTest {
         verify(printStream).println("Welcome to Biblioteca!");
     }
 
-
     @Test
     public void shouldDisplayMenuOptionsWhenWeStart(){
+        when(menu.isDone()).thenReturn(false);
         biblioteca.start();
-        verify(menu).chooseOption();
+        verify(menu, times(1)).chooseOption();
     }
 
-//    @Test
-//    public void shouldChooseOptionsTwiceWhenSecondOptionIsQuit(){
-//        when(buffere)
-//        biblioteca.start();
-//        verify(menu, times(2)).chooseOption();
-//    }
+    @Test
+    public void shouldOnlyChooseOptionsTwiceWhenSecondOptionIsQuit(){
+        when(menu.isDone()).thenReturn(true).thenReturn(false);
+        biblioteca.start();
+        verify(menu, times(2)).chooseOption();
+    }
+
+
 
 }

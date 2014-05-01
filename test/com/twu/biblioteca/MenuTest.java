@@ -7,6 +7,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
 
+import static junit.framework.TestCase.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -23,12 +25,13 @@ public class MenuTest {
         catalog = mock(Catalog.class);
         bufferedReader = mock(BufferedReader.class);
         printStream = mock(PrintStream.class);
-        menu = new Menu(catalog, bufferedReader, printStream);
+        menu = new Menu(catalog, bufferedReader, printStream, false);
     }
 
     @Test
-    public void shouldNotifyWithMessageWhenInvalidOptionIsSelected(){
-        menu.chooseMenuOption("5");
+    public void shouldNotifyWithMessageWhenInvalidOptionIsSelected() throws IOException {
+        when(bufferedReader.readLine()).thenReturn("5");
+        menu.chooseOption();
         verify(printStream).println("Select a valid option!");
     }
 
@@ -54,10 +57,24 @@ public class MenuTest {
 
     }
 
-    // Quit - As a customer, I would like to continue choosing options until I choose to 'Quit'.
-//    @Test
-//    public void shouldQuitWhenSelectQuitFromMenu(){
-//        menu.chooseMenuOption("2");
-//        verify(printStream).println("Quit");
-//    }
+    @Test
+    public void shouldReturnFalseWhenUserInputsQuit() throws IOException {
+        boolean result = menu.isDone();
+        assertFalse(result);
+    }
+
+    @Test
+    public void shouldQuitWhenSelectQuitFromMenu() throws IOException {
+        when(bufferedReader.readLine()).thenReturn("Quit");
+        menu.chooseOption();
+        verify(printStream).println("Thanks for using the App!");
+    }
+
+    @Test
+    public void shouldBeDoneWhenSelectQuitFromMenu() throws IOException {
+        when(bufferedReader.readLine()).thenReturn("Quit");
+        menu.chooseOption();
+        assertTrue(menu.isDone());
+    }
+
 }
