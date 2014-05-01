@@ -77,4 +77,10 @@ public class MenuTest {
         assertTrue(menu.isDone());
     }
 
+    @Test
+    public void shouldDisplayCheckoutBookOptionInMenu() {
+        menu.printOptions();
+        verify(printStream).println("2. Checkout Book");
+    }
+
 }

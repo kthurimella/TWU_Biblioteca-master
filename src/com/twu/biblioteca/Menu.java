@@ -44,4 +44,8 @@ public class Menu {
     public boolean isDone() {
         return doneState;
     }
+
+    public void printOptions() {
+        printStream.println("2. Checkout Book");
+    }
 }
