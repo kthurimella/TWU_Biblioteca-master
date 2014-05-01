@@ -22,4 +22,12 @@ public class Catalog {
             printStream.println(book);
         }
     }
+
+    public Collection<String> getBooks(){
+        return books;
+    }
+
+    public void removeCheckedOutBook(String s) {
+        books.remove(s);
+    }
 }

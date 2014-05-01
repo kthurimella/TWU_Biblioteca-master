@@ -8,8 +8,8 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.junit.Assert.assertFalse;
+import static org.mockito.Mockito.*;
 
 public class CatalogTest {
     private Catalog catalog;
@@ -43,5 +43,11 @@ public class CatalogTest {
         verify(printStream).println("Book List:");
         verify(printStream).println("Book 1");
         verify(printStream).println("Book 2");
+    }
+
+    @Test
+    public void shouldCheckoutSingleBook(){
+        catalog.removeCheckedOutBook("Book 1");
+        assertFalse(catalog.getBooks().contains("Book 1"));
     }
 }
