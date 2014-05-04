@@ -118,6 +118,14 @@ public class MenuTest {
         when(bufferedReader.readLine()).thenReturn("3").thenReturn("Book 1");
         menu.chooseOption();
         verify(printStream).println("Thank you for returning the book.");
+    }
+
+    @Test
+    public void shouldDisplayUnsuccesfulReturnMessage() throws IOException {
+        when(bufferedReader.readLine()).thenReturn("3").thenReturn("Book that doesn't exist");
+        menu.chooseOption();
+        verify(printStream).println("That is not a valid book to return");
 
     }
+
 }

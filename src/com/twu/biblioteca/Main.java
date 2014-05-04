@@ -12,7 +12,7 @@ public class Main {
         Collection<String> books = new ArrayList<String>();
         books.add("Book 1");
         PrintStream out = System.out;
-        Catalog catalog = new Catalog(books, out);
+        Catalog catalog = new Catalog(books, out, new ArrayList<String>());
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         Menu menu = new Menu(catalog, bufferedReader, out);
         BibliotecaApp app = new BibliotecaApp(out, menu);

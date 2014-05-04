@@ -31,8 +31,11 @@ public class Menu {
         }
         else if(option.equals("3")){
             printStream.print("Please type the book you would like to return: ");
-            catalog.returnBook(readline());
-            printStream.println("Thank you for returning the book.");
+            if (catalog.returnBook(readline())) {
+                printStream.println("Thank you for returning the book.");
+            } else {
+                printStream.println("That is not a valid book to return");
+            }
         }
         else if (option.equalsIgnoreCase("Quit")){
             doneState = true;

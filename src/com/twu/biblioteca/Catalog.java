@@ -8,12 +8,14 @@ import java.util.Collection;
  */
 public class Catalog {
 
+    private final Collection<String> checkedOutBooks;
     private Collection<String> books;
     private final PrintStream printStream;
 
-    public Catalog(Collection<String> bookList, PrintStream printStream) {
+    public Catalog(Collection<String> bookList, PrintStream printStream, Collection<String> checkedOutBooks) {
         this.books = bookList;
         this.printStream = printStream;
+        this.checkedOutBooks = checkedOutBooks;
     }
 
     public void printListOfBooks(){
@@ -29,10 +31,18 @@ public class Catalog {
     }
 
     public boolean removeCheckedOutBook(String book) {
-        return books.remove(book);
+        boolean success = books.remove(book);
+        if (success) {
+            checkedOutBooks.add(book);
+        }
+        return success;
     }
 
-    public void returnBook(String book) {
-        books.add(book);
+    public boolean returnBook(String book) {
+        boolean success = checkedOutBooks.remove(book);
+        if (success){
+            books.add(book);
+        }
+        return success;
     }
 }
