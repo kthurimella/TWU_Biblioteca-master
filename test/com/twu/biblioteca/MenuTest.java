@@ -25,7 +25,7 @@ public class MenuTest {
         catalog = mock(Catalog.class);
         bufferedReader = mock(BufferedReader.class);
         printStream = mock(PrintStream.class);
-        menu = new Menu(catalog, bufferedReader, printStream, false);
+        menu = new Menu(catalog, bufferedReader, printStream);
     }
 
     @Test
@@ -90,4 +90,11 @@ public class MenuTest {
         verify(printStream).println("Thank you! Enjoy the book");
     }
 
+    @Test
+    public void shouldDIsplayUnsuccessfulCheckOutMessageWhenBookIsNotAvailable() throws IOException {
+        when(bufferedReader.readLine()).thenReturn("2").thenReturn("Unavailable Book");
+        menu.chooseOption();
+        verify(printStream).println("That book is not available.");
+
+    }
 }

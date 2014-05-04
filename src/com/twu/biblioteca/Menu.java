@@ -10,11 +10,10 @@ public class Menu {
     private PrintStream printStream;
     private boolean doneState;
 
-    public Menu(Catalog catalog, BufferedReader bufferedReader, PrintStream printStream, boolean isDone) {
+    public Menu(Catalog catalog, BufferedReader bufferedReader, PrintStream printStream) {
         this.catalog = catalog;
         this.bufferedReader = bufferedReader;
         this.printStream = printStream;
-        this.doneState = isDone;
     }
 
     public void chooseOption() {
@@ -24,8 +23,11 @@ public class Menu {
         }
         else if(option.equals("2")){
             printStream.print("Please select the book you would like to check out: ");
-            catalog.removeCheckedOutBook(readline());
-            printStream.println("Thank you! Enjoy the book");
+            if (catalog.removeCheckedOutBook(readline())) {
+                printStream.println("Thank you! Enjoy the book");
+            } else {
+                printStream.println("That book is not available.");
+            }
         }
         else if (option.equalsIgnoreCase("Quit")){
             doneState = true;

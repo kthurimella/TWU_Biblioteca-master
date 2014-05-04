@@ -14,12 +14,10 @@ import static org.mockito.Mockito.*;
 public class CatalogTest {
     private Catalog catalog;
     private PrintStream printStream;
-    private BufferedReader inStream;
 
     @Before
     public void setUp() throws Exception {
         printStream = mock(PrintStream.class);
-        inStream = mock(BufferedReader.class);
         Collection<String> bookList = new ArrayList<String>();
         bookList.add("Book 1");
         catalog = new Catalog(bookList, printStream);
@@ -32,6 +30,7 @@ public class CatalogTest {
         verify(printStream).println("Book 1");
     }
 
+    // Clean up to only Book 2.
     @Test
     public void shouldReturnListOfMultipleBooks(){
         Collection<String> bookList = new ArrayList<String>();
@@ -50,4 +49,11 @@ public class CatalogTest {
         catalog.removeCheckedOutBook("Book 1");
         assertFalse(catalog.getBooks().contains("Book 1"));
     }
+
+    @Test
+    public void shouldReturnFalseOnUnsuccessfulCheckout(){
+        boolean checkoutResult = catalog.removeCheckedOutBook("Book Not In Catalog");
+        assertFalse(checkoutResult);
+    }
+
 }

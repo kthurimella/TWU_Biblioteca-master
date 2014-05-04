@@ -32,12 +32,6 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void shouldDisplayWelcomeMessage(){
-        biblioteca.displayUserPrompt();
-        verify(printStream).println("Welcome to Biblioteca!");
-    }
-
-    @Test
     public void shouldWelcomeUserWhenWeStart(){
         when(menu.isDone()).thenReturn(true);
         biblioteca.start();

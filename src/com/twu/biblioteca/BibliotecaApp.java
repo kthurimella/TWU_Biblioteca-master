@@ -12,12 +12,6 @@ public class BibliotecaApp {
         this.menu = menu;
     }
 
-    public void displayUserPrompt() {
-        printStream.println("Welcome to Biblioteca!");
-        printStream.println("Main Menu: 1. List Books");
-        printStream.print("Please select an option: ");
-    }
-
     public void start() {
         printStream.println("Welcome to Biblioteca!");
         do {

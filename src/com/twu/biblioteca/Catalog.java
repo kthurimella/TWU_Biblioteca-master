@@ -28,7 +28,7 @@ public class Catalog {
         return books;
     }
 
-    public void removeCheckedOutBook(String s) {
-        books.remove(s);
+    public boolean removeCheckedOutBook(String s) {
+        return books.remove(s);
     }
 }
