@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 
 public class Main {
 
@@ -14,7 +15,7 @@ public class Main {
         PrintStream out = System.out;
         Catalog catalog = new Catalog(books, out, new ArrayList<String>());
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        Menu menu = new Menu(catalog, bufferedReader, out);
+        Menu menu = new Menu(catalog, bufferedReader, out, new HashMap<String, Command>());
         BibliotecaApp app = new BibliotecaApp(out, menu);
         app.start();
     }

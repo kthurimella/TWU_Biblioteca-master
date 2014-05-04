@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.HashMap;
 
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -26,7 +27,7 @@ public class MenuTest {
         catalog = mock(Catalog.class);
         bufferedReader = mock(BufferedReader.class);
         printStream = mock(PrintStream.class);
-        menu = new Menu(catalog, bufferedReader, printStream);
+        menu = new Menu(catalog, bufferedReader, printStream, new HashMap<String, Command>());
     }
 
     @Test
