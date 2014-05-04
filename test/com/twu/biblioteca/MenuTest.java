@@ -112,4 +112,12 @@ public class MenuTest {
         menu.chooseOption();
         verify(catalog).returnBook("A Book");
     }
+
+    @Test
+    public void shouldDisplaySuccessfulReturnMessage() throws IOException {
+        when(bufferedReader.readLine()).thenReturn("3").thenReturn("Book 1");
+        menu.chooseOption();
+        verify(printStream).println("Thank you for returning the book.");
+
+    }
 }
