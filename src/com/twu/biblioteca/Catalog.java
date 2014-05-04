@@ -28,7 +28,11 @@ public class Catalog {
         return books;
     }
 
-    public boolean removeCheckedOutBook(String s) {
-        return books.remove(s);
+    public boolean removeCheckedOutBook(String book) {
+        return books.remove(book);
+    }
+
+    public void returnBook(String book) {
+        books.add(book);
     }
 }

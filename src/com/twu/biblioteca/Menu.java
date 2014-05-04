@@ -29,6 +29,10 @@ public class Menu {
                 printStream.println("That book is not available.");
             }
         }
+        else if(option.equals("3")){
+            printStream.print("Please type the book you would like to return: ");
+            catalog.returnBook(readline());
+        }
         else if (option.equalsIgnoreCase("Quit")){
             doneState = true;
             printStream.println("Thanks for using the App!");
@@ -55,5 +59,6 @@ public class Menu {
         printStream.println("Main Menu:");
         printStream.println("1. List Books");
         printStream.println("2. Checkout Book");
+        printStream.println("3. Return Book");
     }
 }
