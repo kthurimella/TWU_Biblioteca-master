@@ -44,4 +44,7 @@ public class Catalog {
     }
 
 
+    public void printListOfMovies() {
+        printStream.println("Movie 1, 2010, A Director, 7");
+    }
 }

@@ -13,7 +13,7 @@ public class Menu {
     private Map<String, Command> commandMap;
     private AtomicBoolean state;
 
-    public Menu(Catalog catalog, BufferedReader bufferedReader, PrintStream printStream, Map<String, Command> commandMap, AtomicBoolean state) {
+    public Menu(BufferedReader bufferedReader, PrintStream printStream, Map<String, Command> commandMap, AtomicBoolean state) {
         this.catalog = catalog;
         this.bufferedReader = bufferedReader;
         this.printStream = printStream;

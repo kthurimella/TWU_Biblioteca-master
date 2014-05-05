@@ -2,7 +2,6 @@ package com.twu.biblioteca;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InOrder;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,7 +11,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 
 public class MenuTest {
@@ -31,7 +29,7 @@ public class MenuTest {
         printStream = mock(PrintStream.class);
         doneState = new AtomicBoolean(false);
         commandMap = new HashMap<String, Command>();
-        menu = new Menu(catalog, bufferedReader, printStream, commandMap, doneState);
+        menu = new Menu(bufferedReader, printStream, commandMap, doneState);
     }
 
     @Test

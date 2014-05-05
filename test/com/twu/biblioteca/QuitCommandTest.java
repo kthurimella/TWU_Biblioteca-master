@@ -3,7 +3,6 @@ package com.twu.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -13,7 +12,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 public class QuitCommandTest {
 
@@ -42,7 +40,7 @@ public class QuitCommandTest {
 
     @Test
     public void shouldModifyMenuStateWhenExecuted() {
-        Menu menu = new Menu(null, null, null, null, state);
+        Menu menu = new Menu(null, null, null, state);
         quitCommand.execute();
         assertThat(menu.isDone(), is(true));
 

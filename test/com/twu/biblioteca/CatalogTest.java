@@ -87,4 +87,10 @@ public class CatalogTest {
         catalog.returnBook(book);
         assertThat(bookList, not(hasItem(book)));
     }
+
+    @Test
+    public void shouldPrintListOfMovies() {
+        catalog.printListOfMovies();
+        verify(printStream).println("Movie 1, 2010, A Director, 7");
+    }
 }
