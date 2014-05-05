@@ -3,9 +3,6 @@ package com.twu.biblioteca;
 import java.io.PrintStream;
 import java.util.Collection;
 
-/**
- * Created by ahochoy on 4/29/14.
- */
 public class Catalog {
 
     private final Collection<String> checkedOutBooks;
@@ -45,4 +42,6 @@ public class Catalog {
         }
         return success;
     }
+
+
 }
