@@ -43,10 +43,9 @@ public class Menu {
 
     public void printOptions() {
         printStream.println("Main Menu:");
-        printStream.println("1. List Books");
-        printStream.println("2. Checkout Book");
-        printStream.println("3. Return Book");
-        printStream.println("4. Quit");
+        for (String key : commandMap.keySet()) {
+            printStream.println(String.format("%s. %s", key, commandMap.get(key).commandName()));
+        }
     }
 
     public boolean isDone() {

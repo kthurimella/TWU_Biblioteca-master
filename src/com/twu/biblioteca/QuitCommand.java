@@ -17,4 +17,9 @@ public class QuitCommand implements Command{
         state.set(true);
         printStream.println("Thanks for using the App!");
     }
+
+    @Override
+    public String commandName() {
+        return "Quit";
+    }
 }

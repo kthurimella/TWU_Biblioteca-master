@@ -49,26 +49,6 @@ public class MenuTest {
 
     }
 
-//    @Test
-//    public void shouldReturnFalseWhenUserInputsQuit() throws IOException {
-//        boolean result = menu.isDone();
-//        assertFalse(result);
-//    }
-//
-//    @Test
-//    public void shouldQuitWhenSelectQuitFromMenu() throws IOException {
-//        when(bufferedReader.readLine()).thenReturn("Quit");
-//        menu.chooseOption();
-//        verify(printStream).println("Thanks for using the App!");
-//    }
-//
-//    @Test
-//    public void shouldBeDoneWhenSelectQuitFromMenu() throws IOException {
-//        when(bufferedReader.readLine()).thenReturn("Quit");
-//        menu.chooseOption();
-//        assertTrue(menu.isDone());
-//    }
-
     @Test
     public void shouldCallCommandBasedOnOption() throws IOException {
         Command command = mock(Command.class);
@@ -80,13 +60,11 @@ public class MenuTest {
 
     @Test
     public void shouldPrintQuitOptionWhenPrintStatementIsCalled() throws IOException {
-        InOrder inOrder = inOrder(printStream);
+        Command command = mock(Command.class);
+        when(command.commandName()).thenReturn("Command Name");
+        commandMap.put("1", command);
         menu.printOptions();
-        inOrder.verify(printStream).println("Main Menu:");
-        inOrder.verify(printStream).println("1. List Books");
-        inOrder.verify(printStream).println("2. Checkout Book");
-        inOrder.verify(printStream).println("3. Return Book");
-        inOrder.verify(printStream).println("4. Quit");
+        verify(printStream).println("1. Command Name");
 
     }
 

@@ -29,6 +29,11 @@ public class CheckoutBooksCommand implements Command{
         }
     }
 
+    @Override
+    public String commandName() {
+        return "Checkout Book";
+    }
+
     private String readline() {
         try {
             return bufferedReader.readLine();

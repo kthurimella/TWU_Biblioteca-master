@@ -3,9 +3,7 @@ package com.twu.biblioteca;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Main {
@@ -16,7 +14,7 @@ public class Main {
         PrintStream out = System.out;
         Catalog catalog = new Catalog(books, out, new ArrayList<String>());
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        HashMap<String, Command> commandMap = new HashMap<String, Command>();
+        Map<String, Command> commandMap = new TreeMap<String, Command>();
         AtomicBoolean state = new AtomicBoolean(false);
         commandMap.put("1", new ListBooksCommand(catalog));
         commandMap.put("2", new CheckoutBooksCommand(out, bufferedReader, catalog));

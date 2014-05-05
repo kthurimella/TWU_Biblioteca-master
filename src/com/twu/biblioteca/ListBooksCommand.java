@@ -13,4 +13,9 @@ public class ListBooksCommand implements Command{
     public void execute() {
         catalog.printListOfBooks();
     }
+
+    @Override
+    public String commandName() {
+        return "List Books";
+    }
 }

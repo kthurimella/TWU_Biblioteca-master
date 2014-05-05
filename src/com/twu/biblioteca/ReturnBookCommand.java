@@ -34,6 +34,11 @@ public class ReturnBookCommand implements Command{
 
     }
 
+    @Override
+    public String commandName() {
+        return "Return Book";
+    }
+
     private String readLine() {
         try {
             return bufferedReader.readLine();
